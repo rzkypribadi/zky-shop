@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZKY HOSTING - WEBSITE STORE HOSTING</title>
+    <title>ZKY HOSTING - WEBSITE STORE HOSTING </title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -17,14 +17,13 @@
             --danger: #ef4444;
             --warning: #f59e0b;
             --border: #e2e8f0;
+            --transition-bezier: cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
         * {
             box-sizing: border-box;
             text-transform: uppercase;
             font-family: 'Poppins', sans-serif;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--dark);
@@ -33,7 +32,623 @@
             line-height: 1.7;
             background-color: #f1f5f9;
             text-transform: uppercase;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        /* ANIMATIONS */
+        /* 1. Fade In */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+
+        /* 2. Fade In Up */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+
+        /* 3. Fade In Down */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-down { animation: fadeInDown 0.6s ease-out forwards; opacity: 0; }
+
+        /* 4. Fade In Left */
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+        .fade-in-left { animation: fadeInLeft 0.6s ease-out forwards; opacity: 0; }
+
+        /* 5. Fade In Right */
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        .fade-in-right { animation: fadeInRight 0.6s ease-out forwards; opacity: 0; }
+
+        /* 6. Scale In */
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .scale-in { animation: scaleIn 0.5s var(--transition-bezier) forwards; opacity: 0; }
+
+        /* 7. Scale In Big */
+        @keyframes scaleInBig { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+        .scale-in-big { animation: scaleInBig 0.7s var(--transition-bezier) forwards; opacity: 0; }
+
+        /* 8. Scale Out In */
+        @keyframes scaleOutIn { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .scale-out-in { animation: scaleOutIn 0.6s ease-in-out; }
+
+        /* 9. Slide In Up */
+        @keyframes slideInUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .slide-in-up { animation: slideInUp 0.6s ease-out; }
+
+        /* 10. Slide In Down */
+        @keyframes slideInDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+        .slide-in-down { animation: slideInDown 0.6s ease-out; }
+
+        /* 11. Slide In Left */
+        @keyframes slideInLeft { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+        .slide-in-left { animation: slideInLeft 0.6s ease-out; }
+
+        /* 12. Slide In Right */
+        @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+        .slide-in-right { animation: slideInRight 0.6s ease-out; }
+
+        /* 13. Bounce In */
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        .bounce-in { animation: bounceIn 0.75s ease-out forwards; opacity: 0; }
+
+        /* 14. Bounce In Up */
+        @keyframes bounceInUp {
+            0%, 60%, 75%, 90%, 100% { animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+            0% { opacity: 0; transform: translate3d(0, 3000px, 0) scaleY(5); }
+            60% { opacity: 1; transform: translate3d(0, -20px, 0) scaleY(0.9); }
+            75% { transform: translate3d(0, 10px, 0) scaleY(0.95); }
+            90% { transform: translate3d(0, -5px, 0) scaleY(0.985); }
+            100% { transform: translate3d(0, 0, 0); }
+        }
+        .bounce-in-up { animation: bounceInUp 1s ease-out forwards; opacity: 0; }
+
+        /* 15. Pulse */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .pulse { animation: pulse 2s infinite; }
+
+        /* 16. Pulse Slow */
+        @keyframes pulseSlow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        .pulse-slow { animation: pulseSlow 3s infinite; }
+
+        /* 17. Shake */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake { animation: shake 0.6s ease-in-out; }
+
+        /* 18. Rotate */
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .rotate { animation: rotate 2s linear infinite; }
+
+        /* 19. Rotate Pulse */
+        @keyframes rotatePulse {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        .rotate-pulse { animation: rotatePulse 1s ease-in-out infinite; }
+
+        /* 20. Flip */
+        @keyframes flip {
+            0% { transform: perspective(400px) rotateY(0); }
+            50% { transform: perspective(400px) rotateY(180deg); }
+            100% { transform: perspective(400px) rotateY(360deg); }
+        }
+        .flip { animation: flip 2s ease-in-out infinite; }
+
+        /* 21. Float */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+
+        /* 22. Sink */
+        @keyframes sink {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(15px); }
+            100% { transform: translateY(0px); }
+        }
+        .sink { animation: sink 3s ease-in-out infinite; }
+
+        /* 23. Blur In */
+        @keyframes blurIn {
+            from { filter: blur(5px); opacity: 0; }
+            to { filter: blur(0); opacity: 1; }
+        }
+        .blur-in { animation: blurIn 0.6s ease-out forwards; filter: blur(5px); opacity: 0; }
+
+        /* 24. Blur Out */
+        @keyframes blurOut {
+            from { filter: blur(0); opacity: 1; }
+            to { filter: blur(5px); opacity: 0; }
+        }
+        .blur-out { animation: blurOut 0.6s ease-out forwards; }
+
+        /* 25. Glow */
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.4); }
+        }
+        .glow { animation: glow 2s infinite; }
+
+        /* 26. Glow Danger */
+        @keyframes glowDanger {
+            0% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.4); }
+        }
+        .glow-danger { animation: glowDanger 2s infinite; }
+
+        /* 27. Pop In */
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .pop-in { animation: popIn 0.3s ease-out forwards; transform: scale(0); }
+
+        /* 28. Wobble */
+        @keyframes wobble {
+            0%, 100% { transform: translateX(0); }
+            15% { transform: translateX(-25px) rotate(-5deg); }
+            30% { transform: translateX(20px) rotate(3deg); }
+            45% { transform: translateX(-15px) rotate(-3deg); }
+            60% { transform: translateX(10px) rotate(2deg); }
+            75% { transform: translateX(-5px) rotate(-1deg); }
+        }
+        .wobble { animation: wobble 1s ease; }
+
+        /* 29. Swing */
+        @keyframes swing {
+            20% { transform: rotate(15deg); }
+            40% { transform: rotate(-10deg); }
+            60% { transform: rotate(5deg); }
+            80% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .swing { transform-origin: top center; animation: swing 1s ease; }
+
+        /* 30. Tada */
+        @keyframes tada {
+            0% { transform: scale(1); }
+            10%, 20% { transform: scale(0.9) rotate(-3deg); }
+            30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+            40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+        .tada { animation: tada 1s ease; }
+
+        /* Staggered Animations */
+        /* 31. Stagger Fade In */
+        .stagger-fade-in > * { opacity: 0; }
+        .stagger-fade-in.animate > *:nth-child(1) { animation: fadeIn 0.5s ease-out 0.1s forwards; }
+        .stagger-fade-in.animate > *:nth-child(2) { animation: fadeIn 0.5s ease-out 0.2s forwards; }
+        .stagger-fade-in.animate > *:nth-child(3) { animation: fadeIn 0.5s ease-out 0.3s forwards; }
+        .stagger-fade-in.animate > *:nth-child(4) { animation: fadeIn 0.5s ease-out 0.4s forwards; }
+        .stagger-fade-in.animate > *:nth-child(5) { animation: fadeIn 0.5s ease-out 0.5s forwards; }
+        .stagger-fade-in.animate > *:nth-child(6) { animation: fadeIn 0.5s ease-out 0.6s forwards; }
+        .stagger-fade-in.animate > *:nth-child(7) { animation: fadeIn 0.5s ease-out 0.7s forwards; }
+        .stagger-fade-in.animate > *:nth-child(8) { animation: fadeIn 0.5s ease-out 0.8s forwards; }
+        .stagger-fade-in.animate > *:nth-child(9) { animation: fadeIn 0.5s ease-out 0.9s forwards; }
+        .stagger-fade-in.animate > *:nth-child(10) { animation: fadeIn 0.5s ease-out 1.0s forwards; }
+
+        /* 32. Stagger Fade In Up */
+        .stagger-fade-in-up > * { opacity: 0; transform: translateY(20px); }
+        .stagger-fade-in-up.animate > *:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.1s forwards; }
+        .stagger-fade-in-up.animate > *:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.2s forwards; }
+        .stagger-fade-in-up.animate > *:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.3s forwards; }
+        .stagger-fade-in-up.animate > *:nth-child(4) { animation: fadeInUp 0.5s ease-out 0.4s forwards; }
+        .stagger-fade-in-up.animate > *:nth-child(5) { animation: fadeInUp 0.5s ease-out 0.5s forwards; }
+        .stagger-fade-in-up.animate > *:nth-child(6) { animation: fadeInUp 0.5s ease-out 0.6s forwards; }
+        .stagger-fade-in-up.animate > *:nth-child(7) { animation: fadeInUp 0.5s ease-out 0.7s forwards; }
+        .stagger-fade-in-up.animate > *:nth-child(8) { animation: fadeInUp 0.5s ease-out 0.8s forwards; }
+        .stagger-fade-in-up.animate > *:nth-child(9) { animation: fadeInUp 0.5s ease-out 0.9s forwards; }
+        .stagger-fade-in-up.animate > *:nth-child(10) { animation: fadeInUp 0.5s ease-out 1.0s forwards; }
+
+        /* 33. Stagger Bounce In */
+        .stagger-bounce-in > * { opacity: 0; }
+        .stagger-bounce-in.animate > *:nth-child(1) { animation: bounceIn 0.75s ease-out 0.1s forwards; }
+        .stagger-bounce-in.animate > *:nth-child(2) { animation: bounceIn 0.75s ease-out 0.2s forwards; }
+        .stagger-bounce-in.animate > *:nth-child(3) { animation: bounceIn 0.75s ease-out 0.3s forwards; }
+        .stagger-bounce-in.animate > *:nth-child(4) { animation: bounceIn 0.75s ease-out 0.4s forwards; }
+        .stagger-bounce-in.animate > *:nth-child(5) { animation: bounceIn 0.75s ease-out 0.5s forwards; }
+        .stagger-bounce-in.animate > *:nth-child(6) { animation: bounceIn 0.75s ease-out 0.6s forwards; }
+        .stagger-bounce-in.animate > *:nth-child(7) { animation: bounceIn 0.75s ease-out 0.7s forwards; }
+        .stagger-bounce-in.animate > *:nth-child(8) { animation: bounceIn 0.75s ease-out 0.8s forwards; }
+        .stagger-bounce-in.animate > *:nth-child(9) { animation: bounceIn 0.75s ease-out 0.9s forwards; }
+        .stagger-bounce-in.animate > *:nth-child(10) { animation: bounceIn 0.75s ease-out 1.0s forwards; }
+
+        /* 34. Typewriter Effect */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--accent);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation:
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        /* 35. Gradient Shift */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-shift {
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        /* 36. Morph */
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+        .morph {
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        /* 37. Heartbeat */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+        .heartbeat { animation: heartbeat 1.5s ease-in-out infinite both; }
+
+        /* 38. Jelly */
+        @keyframes jelly {
+            0%, 100% { transform: scale(1, 1); }
+            25% { transform: scale(0.9, 1.1); }
+            50% { transform: scale(1.1, 0.9); }
+            75% { transform: scale(0.95, 1.05); }
+        }
+        .jelly { animation: jelly 0.8s ease-in-out; }
+
+        /* 39. Flash */
+        @keyframes flash {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+        .flash { animation: flash 1.5s ease-in-out; }
+
+        /* 40. Fade In Zoom */
+        @keyframes fadeInZoom { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .fade-in-zoom { animation: fadeInZoom 0.6s ease-out forwards; opacity: 0; }
+
+        /* 41. Fade Out Zoom */
+        @keyframes fadeOutZoom { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(1.2); } }
+        .fade-out-zoom { animation: fadeOutZoom 0.6s ease-out forwards; }
+
+        /* 42. Roll In */
+        @keyframes rollIn {
+            from {
+                opacity: 0;
+                transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        .roll-in { animation: rollIn 0.75s ease-out forwards; opacity: 0; }
+
+        /* 43. Roll Out */
+        @keyframes rollOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+                transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg);
+            }
+        }
+        .roll-out { animation: rollOut 0.75s ease-out forwards; }
+
+        /* 44. Light Speed In */
+        @keyframes lightSpeedIn {
+            from {
+                transform: translate3d(100%, 0, 0) skewX(-30deg);
+                opacity: 0;
+            }
+            60% {
+                transform: skewX(20deg);
+                opacity: 1;
+            }
+            80% {
+                transform: skewX(-5deg);
+            }
+            to {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        .light-speed-in { animation: lightSpeedIn 0.5s ease-out forwards; opacity: 0; }
+
+        /* 45. Light Speed Out */
+        @keyframes lightSpeedOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                transform: translate3d(100%, 0, 0) skewX(30deg);
+                opacity: 0;
+            }
+        }
+        .light-speed-out { animation: lightSpeedOut 0.5s ease-out forwards; }
+
+        /* 46. Hinge */
+        @keyframes hinge {
+            0% { transform-origin: top left; animation-timing-function: ease-in-out; }
+            20%, 60% { transform: rotate3d(0, 0, 1, 80deg); transform-origin: top left; animation-timing-function: ease-in-out; }
+            40%, 80% { transform: rotate3d(0, 0, 1, 60deg); transform-origin: top left; animation-timing-function: ease-in-out; opacity: 1; }
+            to { transform: translate3d(0, 700px, 0); opacity: 0; }
+        }
+        .hinge { animation: hinge 2s ease-in-out forwards; }
+
+        /* 47. Jack In The Box */
+        @keyframes jackInTheBox {
+            from {
+                opacity: 0;
+                transform: scale(0.1) rotate(30deg);
+                transform-origin: center bottom;
+            }
+            50% {
+                transform: rotate(-10deg);
+            }
+            70% {
+                transform: rotate(3deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .jack-in-the-box { animation: jackInTheBox 0.75s ease-out forwards; opacity: 0; }
+
+        /* 48. Rotate In */
+        @keyframes rotateIn {
+            from {
+                transform-origin: center;
+                transform: rotate3d(0, 0, 1, -200deg);
+                opacity: 0;
+            }
+            to {
+                transform-origin: center;
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+        }
+        .rotate-in { animation: rotateIn 0.6s ease-out forwards; opacity: 0; }
+
+        /* 49. Rotate Out */
+        @keyframes rotateOut {
+            from {
+                transform-origin: center;
+                opacity: 1;
+            }
+            to {
+                transform-origin: center;
+                transform: rotate3d(0, 0, 1, 200deg);
+                opacity: 0;
+            }
+        }
+        .rotate-out { animation: rotateOut 0.6s ease-out forwards; }
+
+        /* 50. Zoom In Down */
+        @keyframes zoomInDown {
+            from {
+                opacity: 0;
+                transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+                animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+                animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+            }
+        }
+        .zoom-in-down { animation: zoomInDown 0.75s ease-out forwards; opacity: 0; }
+
+        /* 51. Fade In Up Big */
+        @keyframes fadeInUpBig { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up-big { animation: fadeInUpBig 0.8s ease-out forwards; opacity: 0; }
+
+        /* 52. Fade In Down Big */
+        @keyframes fadeInDownBig { from { opacity: 0; transform: translateY(-100px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-down-big { animation: fadeInDownBig 0.8s ease-out forwards; opacity: 0; }
+
+        /* 53. Fade In Left Big */
+        @keyframes fadeInLeftBig { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+        .fade-in-left-big { animation: fadeInLeftBig 0.8s ease-out forwards; opacity: 0; }
+
+        /* 54. Fade In Right Big */
+        @keyframes fadeInRightBig { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+        .fade-in-right-big { animation: fadeInRightBig 0.8s ease-out forwards; opacity: 0; }
+
+        /* 55. Bounce In Left */
+        @keyframes bounceInLeft {
+            from, 60%, 75%, 90%, 100% { animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+            0% { opacity: 0; transform: translate3d(-3000px, 0, 0); }
+            60% { opacity: 1; transform: translate3d(25px, 0, 0); }
+            75% { transform: translate3d(-10px, 0, 0); }
+            90% { transform: translate3d(5px, 0, 0); }
+            100% { transform: translate3d(0, 0, 0); }
+        }
+        .bounce-in-left { animation: bounceInLeft 0.75s ease-out forwards; opacity: 0; }
+
+        /* 56. Bounce In Right */
+        @keyframes bounceInRight {
+            from, 60%, 75%, 90%, 100% { animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+            0% { opacity: 0; transform: translate3d(3000px, 0, 0); }
+            60% { opacity: 1; transform: translate3d(-25px, 0, 0); }
+            75% { transform: translate3d(10px, 0, 0); }
+            90% { transform: translate3d(-5px, 0, 0); }
+            100% { transform: translate3d(0, 0, 0); }
+        }
+        .bounce-in-right { animation: bounceInRight 0.75s ease-out forwards; opacity: 0; }
+
+        /* 57. Bounce In Down */
+        @keyframes bounceInDown {
+            from, 60%, 75%, 90%, 100% { animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+            0% { opacity: 0; transform: translate3d(0, -3000px, 0); }
+            60% { opacity: 1; transform: translate3d(0, 25px, 0); }
+            75% { transform: translate3d(0, -10px, 0); }
+            90% { transform: translate3d(0, 5px, 0); }
+            100% { transform: translate3d(0, 0, 0); }
+        }
+        .bounce-in-down { animation: bounceInDown 0.75s ease-out forwards; opacity: 0; }
+
+        /* 58. Fade In Rotate */
+        @keyframes fadeInRotate { from { opacity: 0; transform: rotate(-10deg); } to { opacity: 1; transform: rotate(0); } }
+        .fade-in-rotate { animation: fadeInRotate 0.6s ease-out forwards; opacity: 0; }
+
+        /* 59. Fade Out Rotate */
+        @keyframes fadeOutRotate { from { opacity: 1; transform: rotate(0); } to { opacity: 0; transform: rotate(10deg); } }
+        .fade-out-rotate { animation: fadeOutRotate 0.6s ease-out forwards; }
+
+        /* 60. Skew In */
+        @keyframes skewIn { from { opacity: 0; transform: skewX(-20deg); } to { opacity: 1; transform: skewX(0); } }
+        .skew-in { animation: skewIn 0.6s ease-out forwards; opacity: 0; }
+
+        /* 61. Skew Out */
+        @keyframes skewOut { from { opacity: 1; transform: skewX(0); } to { opacity: 0; transform: skewX(20deg); } }
+        .skew-out { animation: skewOut 0.6s ease-out forwards; }
+
+        /* 62. Flip In X */
+        @keyframes flipInX {
+            from {
+                transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+                animation-timing-function: ease-in;
+                opacity: 0;
+            }
+            40% {
+                transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                animation-timing-function: ease-in;
+            }
+            60% {
+                transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+                opacity: 1;
+            }
+            80% {
+                transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+            }
+            to {
+                transform: perspective(400px);
+            }
+        }
+        .flip-in-x { backface-visibility: visible !important; animation: flipInX 0.75s ease-out forwards; opacity: 0; }
+
+        /* 63. Flip Out X */
+        @keyframes flipOutX {
+            from {
+                transform: perspective(400px);
+            }
+            30% {
+                transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                opacity: 1;
+            }
+            to {
+                transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+                opacity: 0;
+            }
+        }
+        .flip-out-x { animation: flipOutX 0.75s ease-out forwards; backface-visibility: visible !important; }
+
+        /* 64. Flip In Y */
+        @keyframes flipInY {
+            from {
+                transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+                animation-timing-function: ease-in;
+                opacity: 0;
+            }
+            40% {
+                transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+                animation-timing-function: ease-in;
+            }
+            60% {
+                transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+                opacity: 1;
+            }
+            80% {
+                transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+            }
+            to {
+                transform: perspective(400px);
+            }
+        }
+        .flip-in-y { backface-visibility: visible !important; animation: flipInY 0.75s ease-out forwards; opacity: 0; }
+
+        /* 65. Flip Out Y */
+        @keyframes flipOutY {
+            from {
+                transform: perspective(400px);
+            }
+            30% {
+                transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
+                opacity: 1;
+            }
+            to {
+                transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+                opacity: 0;
+            }
+        }
+        .flip-out-y { backface-visibility: visible !important; animation: flipOutY 0.75s ease-out forwards; }
+
+        /* 66. Fade In Scale Rotate */
+        @keyframes fadeInScaleRotate { from { opacity: 0; transform: scale(0.8) rotate(-5deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+        .fade-in-scale-rotate { animation: fadeInScaleRotate 0.6s ease-out forwards; opacity: 0; }
+
+        /* 67. Fade Out Scale Rotate */
+        @keyframes fadeOutScaleRotate { from { opacity: 1; transform: scale(1) rotate(0); } to { opacity: 0; transform: scale(1.2) rotate(5deg); } }
+        .fade-out-scale-rotate { animation: fadeOutScaleRotate 0.6s ease-out forwards; }
+
+        /* 68. Pop In Out */
+        @keyframes popInOut {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .pop-in-out { animation: popInOut 0.4s ease-out forwards; transform: scale(0); }
+
+        /* 69. Shrink In */
+        @keyframes shrinkIn { from { opacity: 0; transform: scale(1.2); } to { opacity: 1; transform: scale(1); } }
+        .shrink-in { animation: shrinkIn 0.5s ease-out forwards; opacity: 0; }
+
+        /* 70. Shrink Out */
+        @keyframes shrinkOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.8); } }
+        .shrink-out { animation: shrinkOut 0.5s ease-out forwards; }
+
+        /* Additional Smooth Transitions */
+        a, button, .btn, .plan-card, .feature-card, .testimonial-card {
+            transition: all 0.3s var(--transition-bezier);
         }
 
         /* NAVBAR */
@@ -44,58 +659,57 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            animation: slideDown 0.5s ease-out;
+            transform: translateY(-100%);
+            animation: slideInDown 0.8s ease-out forwards;
         }
-
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
         .logo-img {
             height: 40px;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s var(--transition-bezier);
         }
-
         .logo-img:hover {
-            transform: rotate(5deg) scale(1.05);
+            transform: rotate(5deg) scale(1.1);
         }
-
         .logo-text {
             font-size: 24px;
             font-weight: 700;
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: colorShift 5s infinite alternate;
+            background-clip: text;
+            animation: fadeIn 1s ease-out 0.5s forwards, gradientShift 5s ease infinite 1s;
+            opacity: 0;
         }
-
         .menu a {
             color: var(--primary);
             text-decoration: none;
             margin: 0 15px;
             font-weight: 500;
-            transition: all 0.3s;
             position: relative;
+            opacity: 0;
+            animation: fadeInDown 0.5s ease-out forwards;
         }
-
+        .menu a:nth-child(1) { animation-delay: 0.7s; }
+        .menu a:nth-child(2) { animation-delay: 0.8s; }
+        .menu a:nth-child(3) { animation-delay: 0.9s; }
+        .menu a:nth-child(4) { animation-delay: 1.0s; }
         .menu a:hover {
             color: var(--accent);
         }
-
         .menu a:after {
             content: '';
             position: absolute;
@@ -104,19 +718,16 @@
             background: var(--accent);
             bottom: -5px;
             left: 0;
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
-
         .menu a:hover:after {
             width: 100%;
         }
-
         .btn {
             padding: 12px 28px;
             font-size: 16px;
             font-weight: 600;
             border-radius: 6px;
-            transition: all 0.3s;
             cursor: pointer;
             border: none;
             display: inline-flex;
@@ -124,31 +735,45 @@
             justify-content: center;
             gap: 8px;
             text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: width 0.5s ease;
+            z-index: -1;
+        }
+        .btn:hover:before {
+            width: 100%;
+        }
         .btn-primary {
             background-color: var(--accent);
             color: white;
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
         }
-
         .btn-primary:hover {
             background-color: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
         }
-
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--accent);
             color: var(--accent);
         }
-
         .btn-outline:hover {
             background-color: var(--accent);
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
         }
-
         /* HERO SECTION */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
@@ -157,7 +782,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero:before {
             content: '';
             position: absolute;
@@ -167,41 +791,42 @@
             height: 100%;
             background: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
             opacity: 0.15;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+            opacity: 0;
         }
-
         .hero-content {
             width: 60%;
             position: relative;
-            animation: fadeInUp 1s ease-out;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
         }
-
         .hero h1 {
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.2;
         }
-
         .hero p {
             font-size: 18px;
             opacity: 0.9;
             margin-bottom: 30px;
             text-transform: none;
         }
-
         .btn-group {
             display: flex;
             gap: 15px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
         }
-
         .trust-badges {
             display: flex;
             align-items: center;
             margin-top: 40px;
             gap: 20px;
             flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.2s forwards;
         }
-
         .badge {
             display: flex;
             align-items: center;
@@ -210,64 +835,51 @@
             padding: 8px 15px;
             border-radius: 20px;
             text-transform: none;
-            transition: transform 0.3s, background 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
         }
-
-        .badge:hover {
-            transform: translateY(-3px);
-            background: rgba(255,255,255,0.2);
-        }
-
+        .badge:nth-child(1) { animation: fadeInUp 0.5s ease-out 1.3s forwards; }
+        .badge:nth-child(2) { animation: fadeInUp 0.5s ease-out 1.4s forwards; }
+        .badge:nth-child(3) { animation: fadeInUp 0.5s ease-out 1.5s forwards; }
         .badge i {
             margin-right: 8px;
             color: var(--success);
         }
-
         /* SECTION STYLING */
         .section {
             padding: 80px 0;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(30px);
         }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .section.animate {
+            animation: fadeInUp 0.8s ease-out forwards;
         }
-
         .section-title {
             text-align: center;
             margin-bottom: 60px;
         }
-
         .section-title h2 {
             font-size: 36px;
             color: var(--primary);
             margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
         }
-
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+        .section.animate .section-title h2 {
+            animation: fadeInUp 0.6s ease-out 0.2s forwards;
         }
-
         .section-title p {
             color: #64748b;
             font-size: 18px;
             max-width: 700px;
             margin: 0 auto;
             text-transform: none;
+            opacity: 0;
+            transform: translateY(20px);
         }
-
+        .section.animate .section-title p {
+            animation: fadeInUp 0.6s ease-out 0.4s forwards;
+        }
         /* HOSTING PLANS */
         .plans-grid {
             display: grid;
@@ -275,28 +887,26 @@
             gap: 30px;
             margin-top: 50px;
         }
-
         .plan-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             position: relative;
             border: 1px solid var(--border);
-            animation: fadeIn 0.5s ease-out;
+            opacity: 0;
+            transform: translateY(30px);
         }
-
+        .plan-card.animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
         .plan-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
-
         .plan-popular {
             border: 2px solid var(--accent);
-            animation: pulse 2s infinite;
         }
-
         .popular-tag {
             position: absolute;
             top: 15px;
@@ -307,51 +917,42 @@
             border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
-            animation: bounce 2s infinite;
+            animation: pulse 2s infinite;
         }
-
         .plan-header {
             padding: 30px;
             background-color: var(--primary);
             color: white;
         }
-
         .plan-header h3 {
             font-size: 22px;
             margin-bottom: 5px;
         }
-
         .plan-header p {
             opacity: 0.8;
             font-size: 14px;
             text-transform: none;
         }
-
         .plan-body {
             padding: 30px;
         }
-
         .price {
             font-size: 42px;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 20px;
-            animation: countUp 1s ease-out;
         }
-
         .price span {
             font-size: 16px;
             color: #64748b;
             font-weight: 400;
             text-transform: none;
         }
-
         .features-list {
             list-style: none;
             padding: 0;
             margin-bottom: 30px;
         }
-
         .features-list li {
             padding: 10px 0;
             border-bottom: 1px solid #f1f5f9;
@@ -359,23 +960,30 @@
             align-items: center;
             font-size: 14px;
             text-transform: none;
-            transition: transform 0.3s;
+            opacity: 0;
+            transform: translateX(-20px);
         }
-
-        .features-list li:hover {
-            transform: translateX(5px);
+        .plan-card.animate .features-list li {
+            animation: fadeInLeft 0.5s ease-out forwards;
         }
-
+        .plan-card.animate .features-list li:nth-child(1) { animation-delay: 0.1s; }
+        .plan-card.animate .features-list li:nth-child(2) { animation-delay: 0.2s; }
+        .plan-card.animate .features-list li:nth-child(3) { animation-delay: 0.3s; }
+        .plan-card.animate .features-list li:nth-child(4) { animation-delay: 0.4s; }
+        .plan-card.animate .features-list li:nth-child(5) { animation-delay: 0.5s; }
+        .plan-card.animate .features-list li:nth-child(6) { animation-delay: 0.6s; }
+        .plan-card.animate .features-list li:nth-child(7) { animation-delay: 0.7s; }
+        .plan-card.animate .features-list li:nth-child(8) { animation-delay: 0.8s; }
+        .plan-card.animate .features-list li:nth-child(9) { animation-delay: 0.9s; }
+        .plan-card.animate .features-list li:nth-child(10) { animation-delay: 1.0s; }
         .features-list li:last-child {
             border-bottom: none;
         }
-
         .features-list i {
             color: var(--success);
             margin-right: 10px;
             font-size: 14px;
         }
-
         /* FEATURES SECTION */
         .features-grid {
             display: grid;
@@ -383,22 +991,22 @@
             gap: 30px;
             margin-top: 50px;
         }
-
         .feature-card {
             background: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            transition: all 0.3s;
             border: 1px solid var(--border);
-            animation: fadeInUp 0.5s ease-out;
+            opacity: 0;
+            transform: translateY(30px);
         }
-
+        .feature-card.animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
-
         .feature-icon {
             width: 60px;
             height: 60px;
@@ -410,130 +1018,389 @@
             margin-bottom: 20px;
             color: white;
             font-size: 24px;
-            transition: transform 0.3s;
+            animation: float 3s ease-in-out infinite;
         }
-
-        .feature-card:hover .feature-icon {
-            transform: rotate(10deg) scale(1.1);
-        }
-
         /* TESTIMONIALS */
         .testimonials {
             background-color: white;
             padding: 80px 0;
         }
-
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
         .testimonial-card {
             background: #f8fafc;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border: 1px solid var(--border);
-            transition: all 0.3s;
-            animation: fadeIn 0.5s ease-out;
+            opacity: 0;
+            transform: scale(0.9);
         }
-
+        .testimonial-card.animate {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
         .testimonial-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-
         .testimonial-card .quote {
             font-style: italic;
             margin-bottom: 20px;
             text-transform: none;
-            position: relative;
         }
-
-        .testimonial-card .quote:before {
-            content: '"';
-            font-size: 60px;
-            position: absolute;
-            left: -15px;
-            top: -20px;
-            opacity: 0.1;
-            font-family: Georgia, serif;
-        }
-
         .testimonial-card .author {
             display: flex;
             align-items: center;
         }
-
         .testimonial-card .author img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             margin-right: 15px;
             object-fit: cover;
-            transition: transform 0.3s;
+            border: 2px solid var(--accent);
         }
-
-        .testimonial-card:hover .author img {
-            transform: scale(1.1);
-        }
-
         .testimonial-card .author-info h4 {
             margin: 0;
             font-size: 18px;
         }
-
         .testimonial-card .author-info p {
             margin: 5px 0 0;
             color: #64748b;
             font-size: 14px;
             text-transform: none;
         }
-
-        /* MODAL STYLING (General for all modals) */
-        .modal-overlay {
-            display: none; /* Hidden by default */
+        /* PAYMENT PAGE */
+        .payment-page {
+            display: none;
+            padding: 40px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1001;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+        }
+        .payment-page.show {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .payment-page.hide {
+            animation: fadeOut 0.5s ease-out forwards;
+        }
+        .payment-container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        .payment-page.show .payment-container {
+            animation: scaleIn 0.5s ease-out 0.2s forwards;
+        }
+        .payment-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .payment-header h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .payment-header p {
+            color: #64748b;
+            text-transform: none;
+        }
+        .order-summary {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            text-transform: none;
+        }
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            text-transform: none;
+        }
+        .qris-payment {
+            text-align: center;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+        .qris-frame {
+            border: 2px dashed var(--accent);
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .qris-frame:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+            transform: scale(1.02);
+        }
+        .qris-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .qris-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .qris-code img:hover {
+            transform: scale(1.1);
+        }
+        .qris-loader {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        /* TIMER */
+        .qris-timer {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--danger);
+            margin: 15px 0;
+            text-align: center;
+            padding: 10px;
+            background: #fee2e2;
+            border-radius: 6px;
+            text-transform: none;
+            animation: pulse 2s infinite;
+        }
+        /* PAYMENT PROOF */
+        .payment-proof {
+            margin-top: 20px;
+        }
+        .proof-preview {
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            display: none;
+        }
+        /* FORM GROUP */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            text-transform: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            outline: none;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        /* BUTTONS */
+        .btn-block {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+        }
+        /* SUCCESS MODAL */
+        .success-modal {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background-color: rgba(0,0,0,0.8);
+            z-index: 1002;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+        }
+        .success-modal.show {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .success-modal .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        .success-modal.show .modal-content {
+            animation: scaleIn 0.5s ease-out 0.2s forwards;
+        }
+        .success-icon {
+            font-size: 60px;
+            color: var(--success);
+            margin-bottom: 20px;
+            animation: tada 1s ease;
+        }
+        /* LEARN MORE PAGE */
+        .learn-more-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.9);
             z-index: 1001;
             overflow-y: auto;
             padding: 40px 0;
-            animation: fadeIn 0.3s ease-out;
-            align-items: center; /* For vertical centering */
-            justify-content: center; /* For horizontal centering */
+            backdrop-filter: blur(10px);
+            opacity: 0;
         }
-
-        .modal-content {
+        .learn-more-page.show {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .learn-more-content {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            animation: slideUp 0.5s ease-out;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            transform: translateY(50px);
+            opacity: 0;
         }
-
-        .modal-header {
-            text-align: center;
+        .learn-more-page.show .learn-more-content {
+            animation: fadeInUp 0.5s ease-out 0.2s forwards;
+        }
+        .learn-more-feature {
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-30px);
         }
-
-        .modal-header h2 {
+        .learn-more-page.show .learn-more-feature:nth-child(1) {
+            animation: fadeInLeft 0.6s ease-out 0.4s forwards;
+        }
+        .learn-more-page.show .learn-more-feature:nth-child(2) {
+            animation: fadeInLeft 0.6s ease-out 0.6s forwards;
+        }
+        .learn-more-page.show .learn-more-feature:nth-child(3) {
+            animation: fadeInLeft 0.6s ease-out 0.8s forwards;
+        }
+        .learn-more-page.show .learn-more-feature:nth-child(4) {
+            animation: fadeInLeft 0.6s ease-out 1.0s forwards;
+        }
+        .learn-more-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        .learn-more-text h3 {
+            margin: 0 0 10px 0;
             color: var(--primary);
-            margin-bottom: 10px;
         }
-
-        .modal-header p {
+        .learn-more-text p {
+            margin: 0;
             color: #64748b;
             text-transform: none;
         }
-
+        /* CUSTOMER INFO PAGE */
+        .customer-info-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1001;
+            overflow-y: auto;
+            padding: 40px 0;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+        }
+        .customer-info-page.show {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .customer-info-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        .customer-info-page.show .customer-info-container {
+            animation: scaleIn 0.5s ease-out 0.2s forwards;
+        }
+        /* CLOSE BUTTONS */
         .close-btn {
             position: absolute;
             top: 15px;
@@ -549,197 +1416,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             z-index: 10;
         }
-
         .close-btn:hover {
             background: var(--danger);
             color: white;
-            transform: rotate(90deg);
+            transform: rotate(90deg) scale(1.1);
         }
-
-        /* Form Group */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            font-size: 16px;
-            font-family: 'Poppins', sans-serif;
-            text-transform: none;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-            outline: none;
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        /* Order Summary */
-        .order-summary {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-
-        .order-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            text-transform: none;
-        }
-
-        .total {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            font-size: 18px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #e2e8f0;
-            text-transform: none;
-        }
-
-        /* QRIS Payment Section */
-        .qris-payment {
-            text-align: center;
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border);
-        }
-
-        .qris-frame {
-            border: 2px dashed var(--accent);
-            padding: 15px;
-            border-radius: 12px;
-            display: inline-block;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        .qris-code {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-
-        .qris-code:hover {
-            transform: scale(1.05);
-        }
-
-        .qris-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* Timer */
-        .qris-timer {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--danger);
-            margin: 15px 0;
-            text-align: center;
-            padding: 10px;
-            background: #fee2e2;
-            border-radius: 8px;
-            text-transform: none;
-            animation: pulse 1s infinite;
-        }
-
-        /* Payment Proof */
-        .payment-proof {
-            margin-top: 20px;
-        }
-
-        .proof-preview {
-            max-width: 100%;
-            max-height: 200px;
-            margin-top: 10px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            display: none;
-            transition: all 0.3s;
-        }
-
-        /* Success Modal */
-        .success-modal .modal-content {
-            text-align: center;
-        }
-
-        .success-icon {
-            font-size: 60px;
-            color: var(--success);
-            margin-bottom: 20px;
-            animation: bounceIn 1s ease-out;
-        }
-
-        /* Learn More Page */
-        .learn-more-feature {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-        }
-
-        .learn-more-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            color: white;
-            font-size: 20px;
-            flex-shrink: 0;
-            transition: transform 0.3s;
-        }
-
-        .learn-more-feature:hover .learn-more-icon {
-            transform: rotate(15deg) scale(1.1);
-        }
-
-        .learn-more-text h3 {
-            margin: 0 0 10px 0;
-            color: var(--primary);
-        }
-
-        .learn-more-text p {
-            margin: 0;
-            color: #64748b;
-            text-transform: none;
-        }
-
-        /* Live Chat Button */
+        /* LIVE CHAT BUTTON */
         .live-chat {
             position: fixed;
             bottom: 30px;
@@ -755,18 +1440,1705 @@
             box-shadow: 0 5px 20px rgba(59, 130, 246, 0.5);
             cursor: pointer;
             z-index: 999;
-            animation: pulse 2s infinite, bounce 2s infinite;
-            transition: all 0.3s;
+            animation: pulse 2s infinite, float 3s ease-in-out infinite;
         }
-
         .live-chat:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 25px rgba(59, 130, 246, 0.7);
         }
+        /* NEW FEATURES */
+        /* 1. Notification Toast */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: var(--success);
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1003;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+            opacity: 0;
+        }
+        .toast.show {
+            visibility: visible;
+            animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+            opacity: 1;
+        }
+        @keyframes fadeOut {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
 
-        /* Scroll to Top Button */
-        .scroll-top {
+        /* 2. Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #e0e0e0;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-bar-inner {
+            height: 100%;
+            background-color: var(--accent);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        /* 3. Loading Spinner */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none; /* Hidden by default */
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* 4. Back to Top Button */
+        .back-to-top {
             position: fixed;
             bottom: 100px;
             right: 30px;
-            width: 50p
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 998;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background-color: #2563eb;
+            transform: translateY(-5px);
+        }
+
+        /* 5. Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 100px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        .dark-mode-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        /* 6. Dark Mode Styles */
+        body.dark-mode {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        body.dark-mode .navbar {
+            background-color: #1e293b;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        body.dark-mode .logo-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body.dark-mode .menu a {
+            color: #e2e8f0;
+        }
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+        }
+        body.dark-mode .section-title h2 {
+            color: #e2e8f0;
+        }
+        body.dark-mode .section-title p {
+            color: #94a3b8;
+        }
+        body.dark-mode .plan-card,
+        body.dark-mode .feature-card,
+        body.dark-mode .testimonial-card,
+        body.dark-mode .payment-container,
+        body.dark-mode .customer-info-container,
+        body.dark-mode .learn-more-content,
+        body.dark-mode .modal-content {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        body.dark-mode .plan-header {
+            background-color: #0f172a;
+        }
+        body.dark-mode .price {
+            color: #e2e8f0;
+        }
+        body.dark-mode .price span,
+        body.dark-mode .features-list li,
+        body.dark-mode .testimonial-card .author-info p,
+        body.dark-mode .payment-header p,
+        body.dark-mode .learn-more-text p {
+            color: #94a3b8;
+        }
+        body.dark-mode .features-list li {
+            border-bottom-color: #334155;
+        }
+        body.dark-mode .order-summary,
+        body.dark-mode .qris-payment {
+            background-color: #0f172a;
+            border-color: #334155;
+        }
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background-color: #0f172a;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        body.dark-mode .form-group input::placeholder,
+        body.dark-mode .form-group textarea::placeholder {
+            color: #64748b;
+        }
+        body.dark-mode .close-btn {
+            background-color: #334155;
+            color: #ef4444;
+        }
+        body.dark-mode .close-btn:hover {
+            background-color: #ef4444;
+            color: white;
+        }
+        body.dark-mode .testimonial-card .author img {
+            border-color: #3b82f6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero-content {
+                width: 100%;
+            }
+            .hero:before {
+                display: none;
+            }
+        }
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .btn-group {
+                flex-direction: column;
+            }
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            .dark-mode-toggle {
+                right: 20px;
+                top: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container flex">
+            <div class="logo">
+                <img src="https://files.catbox.moe/biqwry.jpg" alt="ZKY Hosting" class="logo-img">
+                <span class="logo-text">ZKY HOSTING</span>
+            </div>
+            <div class="menu">
+                <a href="#">BERANDA</a>
+                <a href="#hostingPlans">PAKET HOSTING</a>
+                <a href="#features">FITUR</a>
+                <a href="#testimonials">TESTIMONI</a>
+                <button class="btn btn-outline">CLIENT AREA</button>
+            </div>
+        </div>
+    </nav>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container flex">
+            <div class="hero-content">
+                <h1>HOSTING VPS & PANEL BERKUALITAS TINGGI</h1>
+                <p>Solusi hosting terbaik dengan performa maksimal dan dukungan 24/7 dari tim ahli kami.</p>
+                <div class="btn-group">
+                    <button class="btn btn-outline" id="startNowBtn">
+                        <i class="fas fa-shopping-cart"></i> BERBELANJA
+                    </button>
+                    <button class="btn btn-outline" id="learnMoreBtn">
+                        <i class="fas fa-book-open"></i> PELAJARI SELENGKAPNYA
+                    </button>
+                </div>
+                <div class="trust-badges">
+                    <div class="badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Garansi Uptime 99.9%</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Dukungan 24/7</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Server Terbaik</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- HOSTING PLANS -->
+    <section class="section" id="hostingPlans">
+        <div class="container">
+            <div class="section-title">
+                <h2>RODUK HOSTING </h2>
+                <p>Pilih solusi sempurna untuk kebutuhan bisnis online Anda</p>
+            </div>
+            <div class="plans-grid">
+                <!-- VPS RAM 16 CORE 4 -->
+                <div class="plan-card plan-popular">
+                    <div class="popular-tag">POPULER</div>
+                    <div class="plan-header">
+                        <h3>VPS RAM 16 CORE 4</h3>
+                        <p>SPESIFIKASI TINGGI</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP60.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 16GB</li>
+                            <li><i class="fas fa-check"></i> 4 CPU CORE</li>
+                            <li><i class="fas fa-check"></i> VPS TAHAN LAMA</li>
+                            <li><i class="fas fa-check"></i> MENGGUNAKAN DO PP</li>
+                            <li><i class="fas fa-check"></i> GRATIS INSTALL PTERODACTYL</li>
+                            <li><i class="fas fa-check"></i> GRATIS START WINGS</li>
+                            <li><i class="fas fa-check"></i> GRATIS PASANG EGG BOT WHATSAPP</li>
+                            <li><i class="fas fa-check"></i> GRATIS DOMAIN</li>
+                            <li><i class="fas fa-check"></i> GRATIS INSTALL THEMA</li>
+                            <li><i class="fas fa-check"></i> GARANSI 15 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('VPS RAM 16 CORE 4', 60000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- VPS RAM 8 CORE 4 -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>VPS RAM 8 CORE 4</h3>
+                        <p>SPESIFIKASI MENENGAH</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP50.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 8GB</li>
+                            <li><i class="fas fa-check"></i> 4 CPU CORE</li>
+                            <li><i class="fas fa-check"></i> VPS TAHAN LAMA</li>
+                            <li><i class="fas fa-check"></i> MENGGUNAKAN DO PP</li>
+                            <li><i class="fas fa-check"></i> GRATIS INSTALL PTERODACTYL</li>
+                            <li><i class="fas fa-check"></i> GRATIS START WINGS</li>
+                            <li><i class="fas fa-check"></i> GRATIS PASANG EGG BOT WHATSAPP</li>
+                            <li><i class="fas fa-check"></i> GRATIS DOMAIN</li>
+                            <li><i class="fas fa-check"></i> GARANSI 15 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('VPS RAM 8 CORE 4', 50000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- VPS RAM 4 CORE 2 -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>VPS RAM 4 CORE 2</h3>
+                        <p>SPESIFIKASI DASAR</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP35.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 4GB</li>
+                            <li><i class="fas fa-check"></i> 2 CPU CORE</li>
+                            <li><i class="fas fa-check"></i> VPS TAHAN LAMA</li>
+                            <li><i class="fas fa-check"></i> MENGGUNAKAN DO PP</li>
+                            <li><i class="fas fa-check"></i> GRATIS INSTALL PTERODACTYL</li>
+                            <li><i class="fas fa-check"></i> GRATIS START WINGS</li>
+                            <li><i class="fas fa-check"></i> GRATIS PASANG EGG BOT WHATSAPP</li>
+                            <li><i class="fas fa-check"></i> GRATIS DOMAIN</li>
+                            <li><i class="fas fa-check"></i> GARANSI 15 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('VPS RAM 4 CORE 2', 35000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PARTNER PANEL -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PARTNER PANEL</h3>
+                        <p>PARTNER PANEL BY ZKY HOSTING</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP35.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> DAPET 3 ADMIN PANEL BEDA SERVER</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN OWNER PANEL</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN ADMIN PANEL</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN RESELLER PANEL</li>
+                            <li><i class="fas fa-check"></i> BISA JUAL PANEL</li>
+                            <li><i class="fas fa-check"></i> MASA AKTIF 30DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PARTNER PANEL', 35000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- OWNER PANEL -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>OWNER PANEL</h3>
+                        <p>OWNER PANEL BY ZKY HOSTING</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP25.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> DAPET 2 ADMIN PANEL BEDA SERVER</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN ADMIN PANEL</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN RESELLER PANEL</li>
+                            <li><i class="fas fa-check"></i> BISA JUAL PANEL</li>
+                            <li><i class="fas fa-check"></i> MASA AKTIF 30DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('OWNER PANEL', 25000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- ADMIN PANEL -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>ADMIN PANEL</h3>
+                        <p>ADMIN PANEL BY ZKY HOSTING</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP15.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> DAPET 1 ADMIN PANEL BEDA SERVER</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN RESELLER PANEL</li>
+                            <li><i class="fas fa-check"></i> BISA JUAL PANEL</li>
+                            <li><i class="fas fa-check"></i> MASA AKTIF 30DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('ADMIN PANEL', 15000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- RESELLER PANEL -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>RESELLER PANEL</h3>
+                        <p>RESELLER PANEL BY ZKY HOSTING</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP10.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> BISA JUAL PANEL</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> MASA AKTIF 30DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('RESELLER PANEL', 10000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL UNLIMITED -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM UNLIMITED</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP12.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM UNLIMITED</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM UNLIMITED', 12000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 10GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 10GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP10.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 10GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 10GB', 10000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 9GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 9GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP9.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 9GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 9GB', 9000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 8GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 8GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP8.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 8GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 8GB', 8000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 7GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 7GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP7.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 7GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 7GB', 7000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 6GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 6GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP6.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 6GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 6GB', 6000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 5GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 5GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP5.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 5GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 5GB', 5000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 4GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 4GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP4.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 4GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 4GB', 4000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 3GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 3GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP3.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 3GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 3GB', 3000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 2GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 2GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP2.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 2GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 2GB', 2000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- PANEL PTERODACTYL 1GB -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PANEL PTERODACTYL</h3>
+                        <p>RAM 1GB</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP1.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> RAM 1GB</li>
+                            <li><i class="fas fa-check"></i> ANTI COLONG SCRIPT</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN JASA RUN</li>
+                            <li><i class="fas fa-check"></i> BISA OPEN SEWA BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI 10 DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('PANEL PTERODACTYL RAM 1GB', 1000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- SUBDOMAIN -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>SUBDOMAIN</h3>
+                        <p>CUSTOM DOMAIN</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP7.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> BISA INSTALL PANEL</li>
+                            <li><i class="fas fa-check"></i> BISA REQUEST NAMA</li>
+                            <li><i class="fas fa-check"></i> AWET</li>
+                            <li><i class="fas fa-check"></i> GARANSI 30DAY</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('SUBDOMAIN', 7000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- NOMOR KOSONG -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>NOMOR KOSONG</h3>
+                        <p>INDONESIA - LUAR</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP8.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> BISA PRANK KAWAN</li>
+                            <li><i class="fas fa-check"></i> BISA JADI NOMOR BOT</li>
+                            <li><i class="fas fa-check"></i> NOMOR KOSONG 1× VERIF</li>
+                            <li><i class="fas fa-check"></i> GARANSI 6 JAM</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('NOMOR KOSONG INDONESIA', 8000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- JASA RUN BOT -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>JASA RUN BOT</h3>
+                        <p>HEMAT BIAYA</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP5.000<span>/BULAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> GA USAH BELI PANEL</li>
+                            <li><i class="fas fa-check"></i> GA USAH RIBET</li>
+                            <li><i class="fas fa-check"></i> TINGGAL KIRIM SCRIPT</li>
+                            <li><i class="fas fa-check"></i> TINGGAL TUNGGU</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('JASA RUN BOT', 5000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- JASA REKBER -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>JASA REKBER</h3>
+                        <p>TRANSAKSI AMAN</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP5.000<span>/TRANSAKSI</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> TERHINDAR DARI RIPPER</li>
+                            <li><i class="fas fa-check"></i> BISA TRANSFER VIA DANA/OVO/GOPAY/BANK</li>
+                            <li><i class="fas fa-check"></i> BIAYA ADMIN TERJANGKAU</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('JASA REKBER', 5000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- JASA SUNTIK -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>JASA SUNTIK</h3>
+                        <p>SOSIAL MEDIA</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP5.000<span>/LAYANAN</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> FOLLOWER TIKTOK BERTAMBAH</li>
+                            <li><i class="fas fa-check"></i> FOLLOWER INSTAGRAM BERTAMBAH</li>
+                            <li><i class="fas fa-check"></i> LIKE TIKTOK BERTAMBAH</li>
+                            <li><i class="fas fa-check"></i> LIKE INSTAGRAM BERTAMBAH</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('JASA SUNTIK SOSMED', 5000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- JASA RENAME -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>JASA RENAME</h3>
+                        <p>SCRIPT</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP15.000<span>/SCRIPT</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> BISA PUNYA SCRIPT DENGAN NAMA SENDIRI</li>
+                            <li><i class="fas fa-check"></i> ANTI EROR</li>
+                            <li><i class="fas fa-check"></i> GRATIS FIX EROR</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('JASA RENAME SCRIPT', 15000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- JASA INSTALL -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>JASA INSTALL</h3>
+                        <p>PANEL PTERODACTYL</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP10.000<span>/INSTALL</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> GA SUSAH SUSAH INSTALL</li>
+                            <li><i class="fas fa-check"></i> GRATIS SUBDOMAIN</li>
+                            <li><i class="fas fa-check"></i> GRATIS PASANG EGG BOT WHATSAPP</li>
+                            <li><i class="fas fa-check"></i> GRATIS START WINGS</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('JASA INSTALL PANEL PTERODACTYL', 10000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- JASA START WINGS -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>JASA START WINGS</h3>
+                        <p>NODE HIJAU</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP10.000<span>/START</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> NODE JADI HIJAU</li>
+                            <li><i class="fas fa-check"></i> TANPA EROR</li>
+                            <li><i class="fas fa-check"></i> BISA RUN BOT</li>
+                            <li><i class="fas fa-check"></i> GARANSI UANG KEMBALI 50%</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('JASA START WINGS', 10000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- JASA PASANG EGG -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>JASA PASANG EGG</h3>
+                        <p>BOT WHATSAPP</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP7.000<span>/PASANG</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> BISA RUN SCRIPT BOT WHATSAPP</li>
+                            <li><i class="fas fa-check"></i> BISA RUN SCRIPT BOT TELEGRAM</li>
+                            <li><i class="fas fa-check"></i> MENGGUNAKAN EGG VERSI 21</li>
+                            <li><i class="fas fa-check"></i> TANPA EROR</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('JASA PASANG EGG BOT WHATSAPP', 7000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- JASA ENCRYPT -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>JASA ENCRYPT</h3>
+                        <p>SCRIPT</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP10.000<span>/FILE-JAVASCRIPT</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> MENGGUNAKAN METODE ENCRYPT HARD</li>
+                            <li><i class="fas fa-check"></i> TIDAK BISA DI TEMBUS</li>
+                            <li><i class="fas fa-check"></i> TIDAK BISA DI BUKA</li>
+                            <li><i class="fas fa-check"></i> AMAN DARI PENYEBAR FITUR</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('JASA ENCRYPT', 10000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- JASA PENGISIAN PULSA -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>JASA PENGISIAN</h3>
+                        <p>PULSA - KUOTA - TOKEN PLN</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP7.000<span>/TRANSAKSI</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> BISA SEMUA OPERATOR</li>
+                            <li><i class="fas fa-check"></i> HARGA TERJANGKAU</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('JASA PENGISIAN PULSA', 7000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- SCRIPT BOT SIMPLE V8 -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>SCRIPT BOT SIMPLE V8</h3>
+                        <p>BY SKYZO</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP45.000<span>/SCRIPT</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> GRATIS TAMBAH DATABASE</li>
+                            <li><i class="fas fa-check"></i> GRATIS UPDATE</li>
+                            <li><i class="fas fa-check"></i> SUPPORT WA BISNIS</li>
+                            <li><i class="fas fa-check"></i> SCRIPT TANPA ENCRYPT</li>
+                            <li><i class="fas fa-check"></i> ANTI DICOLONG (ADA DATABASE)</li>
+                            <li><i class="fas fa-check"></i> MENU SHOP, STORE, MAIN</li>
+                            <li><i class="fas fa-check"></i> MENU DOWNLOAD, SEARCH, GAME</li>
+                            <li><i class="fas fa-check"></i> MENU GRUB, CHANNEL, PANEL</li>
+                            <li><i class="fas fa-check"></i> MENU CLOUDFLARE, SETTING BOT, OWNER</li>
+                            <li><i class="fas fa-check"></i> GRATIS PANEL UNLIMITED</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('SCRIPT BOT SIMPLE V8 BY SKYZO', 45000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+                <!-- SCRIPT BOT ELAINA AI -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>SCRIPT BOT ELAINA AI</h3>
+                        <p>FITUR LENGKAP</p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="price">RP40.000<span>/SCRIPT</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> FITUR 510+ COMMAND</li>
+                            <li><i class="fas fa-check"></i> COCOK BUAT JAGA GRUP</li>
+                            <li><i class="fas fa-check"></i> COCOK BUAT MAIN</li>
+                            <li><i class="fas fa-check"></i> MENU ALL, MAIN, TOP UP</li>
+                            <li><i class="fas fa-check"></i> MENU AI, GAME, RPG, XP</li>
+                            <li><i class="fas fa-check"></i> MENU STICKER, KERANG, QUOTES</li>
+                            <li><i class="fas fa-check"></i> MENU FUN, ANIME, GROUP</li>
+                            <li><i class="fas fa-check"></i> MENU PREMIUM, NSFW, INTERNET</li>
+                            <li><i class="fas fa-check"></i> MENU GENSHIN, NEWS, SEARCH</li>
+                            <li><i class="fas fa-check"></i> MENU TOOLS, PRIMBON, NULIS</li>
+                            <li><i class="fas fa-check"></i> MENU AUDIO, MAKER, QURAN</li>
+                            <li><i class="fas fa-check"></i> MENU OWNER, INFO</li>
+                            <li><i class="fas fa-check"></i> TANPA DATABASE</li>
+                            <li><i class="fas fa-check"></i> GRATIS PANEL UNLIMITED</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openCustomerInfo('SCRIPT BOT ELAINA AI', 40000)">
+                            <i class="fas fa-shopping-cart"></i> PESAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FEATURES SECTION -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>KEUNGGULAN ZKY HOSTING</h2>
+                <p>Kami memberikan yang terbaik untuk memastikan hosting Anda berjalan optimal</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>SERVER CANGGIH</h3>
+                    <p>Infrastruktur terbaik dengan hardware berkualitas tinggi untuk performa maksimal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>KEAMANAN TERJAMIN</h3>
+                    <p>Proteksi DDoS, firewall, dan sistem keamanan berlapis untuk data Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>KECEPATAN OPTIMAL</h3>
+                    <p>SSD NVMe dan jaringan cepat untuk loading super cepat.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>SUPPORT 24/7</h3>
+                    <p>Tim ahli siap membantu kapan saja melalui live chat, ticket, atau telepon.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>AUTO SCALING</h3>
+                    <p>Upgrade resource kapan saja sesuai kebutuhan tanpa downtime.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>BACKUP HARIAN</h3>
+                    <p>Backup otomatis harian dan restorasi satu klik untuk keamanan data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>APA KATA PELANGGAN KAMI?</h2>
+                <p>Lihat pengalaman nyata dari pelanggan ZKY HOSTING</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "Saya sudah membeli admin panel di ZKY HOSTING sudah 2× dan sangat puas dengan kecepatan dan dukungannya. Server VPS mereka sangat stabil!"
+                    </div>
+                    <div class="author">
+                        <img src="https://files.catbox.moe/le7gx7.jpg" alt="Lucci">
+                        <div class="author-info">
+                            <h4>Lucci</h4>
+                            <p>Salah Satu Pembeli Di ZKY HOSTING</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "Saya membeli Panel Pterodactyl di ZKY HOSTING dan tidak ribet ataupun tertipu jadi sangat saya rekomendasikan "
+                    </div>
+                    <div class="author">
+                        <img src="https://files.catbox.moe/aqr1zx.jpg" alt="Luxx">
+                        <div class="author-info">
+                            <h4>Luxx</h4>
+                            <p>Salah Satu Pembeli Di ZKY HOSTING</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "Script Simple V8 dari skyzo yang di jual ZKY HOSTING sangat membantu bisnis saya. Fitur lengkap dan menarik!"
+                    </div>
+                    <div class="author">
+                        <img src="https://files.catbox.moe/tq4mih.jpg" alt="Ryan">
+                        <div class="author-info">
+                            <h4>Ryan</h4>
+                            <p>Salah Satu Pembeli Di ZKY HOSTING</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- LEARN MORE PAGE -->
+    <section class="learn-more-page" id="learnMorePage">
+        <div class="container">
+            <div class="learn-more-content">
+                <button class="close-btn" onclick="closeLearnMorePage()">✕</button>
+                <div class="section-title">
+                    <h2>TENTANG ZKY HOSTING</h2>
+                    <p>Solusi hosting profesional untuk kebutuhan bisnis Anda</p>
+                </div>
+                <div class="learn-more-feature">
+                    <div class="learn-more-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="learn-more-text">
+                        <h3>LAYANAN VPS BERKUALITAS</h3>
+                        <p>Kami menyediakan VPS dengan berbagai spesifikasi mulai dari RAM 4GB hingga 16GB dengan harga terjangkau dan performa tinggi. Server kami menggunakan SSD NVMe untuk kecepatan optimal.</p>
+                    </div>
+                </div>
+                <div class="learn-more-feature">
+                    <div class="learn-more-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="learn-more-text">
+                        <h3>SCRIPT BOT WHATSAPP</h3>
+                        <p>Kami menyediakan berbagai script bot WhatsApp siap pakai dengan fitur lengkap seperti Simple V8 dan Elaina AI. Script kami mudah diinstall dan memiliki fitur yang lengkap untuk berbagai kebutuhan.</p>
+                    </div>
+                </div>
+                <div class="learn-more-feature">
+                    <div class="learn-more-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="learn-more-text">
+                        <h3>KEAMANAN BERLAPIS</h3>
+                        <p>Sistem keamanan berlapis untuk melindungi data dan server Anda dari berbagai ancaman. Kami menggunakan firewall, proteksi DDoS, dan sistem monitoring 24/7.</p>
+                    </div>
+                </div>
+                <div class="learn-more-feature">
+                    <div class="learn-more-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="learn-more-text">
+                        <h3>DUKUNGAN 24/7</h3>
+                        <p>Tim support siap membantu Anda kapan saja melalui WhatsApp, email, atau live chat. Respon cepat dan solusi tepat untuk setiap masalah yang Anda hadapi.</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="closeLearnMorePage(); window.location.href='#hostingPlans'" style="margin-top: 30px;">
+                    <i class="fas fa-shopping-cart"></i> LIHAT PAKET HOSTING
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- CUSTOMER INFO PAGE -->
+    <section class="customer-info-page" id="customerInfoPage">
+        <div class="container">
+            <div class="customer-info-container">
+                <button class="close-btn" onclick="closeCustomerInfoPage()">✕</button>
+                <div class="payment-header">
+                    <h2>DATA DIRI</h2>
+                    <p>Silahkan isi data diri Anda untuk melanjutkan pembayaran</p>
+                </div>
+                <div class="order-summary">
+                    <h4>RINGKASAN PESANAN</h4>
+                    <div class="order-item">
+                        <span id="customerInfoSelectedPlan">SCRIPT BOT SIMPLE V8 BY SKYZO</span>
+                        <span id="customerInfoSelectedPrice">RP45.000/SCRIPT</span>
+                    </div>
+                </div>
+                <form id="customerInfoForm">
+                    <div class="form-group">
+                        <label for="customerName">NAMA LENGKAP *</label>
+                        <input type="text" id="customerName" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone">NOMOR WHATSAPP *</label>
+                        <input type="tel" id="customerPhone" placeholder="Masukkan nomor WhatsApp aktif" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerEmail">EMAIL *</label>
+                        <input type="email" id="customerEmail" placeholder="Masukkan email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerNote">CATATAN (OPSIONAL)</label>
+                        <textarea id="customerNote" placeholder="Masukkan catatan tambahan jika ada"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" id="customerInfoContinueBtn">
+                        <i class="fas fa-arrow-right"></i> LANJUT KE PEMBAYARAN
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- PAYMENT PAGE -->
+    <section class="payment-page" id="paymentPage">
+        <div class="container">
+            <div class="payment-container">
+                <button class="close-btn" onclick="closePaymentPage()">✕</button>
+                <div class="payment-header">
+                    <h2>PEMBAYARAN</h2>
+                    <p>Silahkan selesaikan pembayaran untuk mengaktifkan layanan Anda</p>
+                </div>
+                <div class="order-summary">
+                    <h4>RINGKASAN PESANAN</h4>
+                    <div class="order-item">
+                        <span id="paymentSelectedPlan">SCRIPT BOT SIMPLE V8 BY SKYZO</span>
+                        <span id="paymentSelectedPrice">RP45.000/SCRIPT</span>
+                    </div>
+                    <div class="order-item">
+                        <span>BIAYA ADMIN</span>
+                        <span id="paymentAdminFee">RP0</span>
+                    </div>
+                    <div class="total">
+                        <span>TOTAL PEMBAYARAN</span>
+                        <span id="paymentTotalPrice">RP0</span>
+                    </div>
+                </div>
+                <div class="qris-payment">
+                    <h4>TRANSFER SESUAI NOMINAL DI BAWAH</h4>
+                    <div class="qris-frame">
+                        <div class="qris-code">
+                            <!-- QRIS Loader -->
+                            <div class="qris-loader" id="qrisLoader"></div>
+                            <!-- QRIS Image -->
+                            <img id="paymentQrisImage" src="" alt="QRIS Code" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="price" style="font-size: 24px; margin: 10px 0;">
+                        <span id="paymentTotalPrice2">RP0</span>
+                        <span style="font-size: 14px;">(SUDAH TERMASUK BIAYA ADMIN)</span>
+                    </div>
+                    <div class="qris-timer" id="paymentQrisTimer">QRIS AKAN EXPIRED DALAM: 10:00</div>
+                    <p>Segera lakukan pembayaran sebelum waktu habis</p>
+                    <!-- Progress Bar for Timer -->
+                    <div class="progress-bar">
+                        <div class="progress-bar-inner" id="timerProgressBar"></div>
+                    </div>
+                </div>
+                <div class="payment-proof">
+                    <h4>UPLOAD BUKTI TRANSFER</h4>
+                    <input type="file" id="paymentProofFile" accept="image/*,video/*" style="display: none;">
+                    <button class="btn btn-outline btn-block" id="paymentUploadBtn">
+                        <i class="fas fa-upload"></i> PILIH FILE BUKTI TRANSFER (MAX 10MB)
+                    </button>
+                    <!-- Loading Spinner -->
+                    <div class="spinner" id="uploadSpinner"></div>
+                    <small>FORMAT YANG DIDUKUNG: JPG, PNG, MP4</small>
+                    <img id="paymentProofPreview" class="proof-preview" src="#" alt="Preview Bukti Transfer">
+                    <video id="paymentProofVideoPreview" class="proof-preview" controls style="display: none;"></video>
+                </div>
+                <button class="btn btn-primary btn-block" id="paymentPayButton" disabled>
+                    <i class="fas fa-paper-plane"></i> KONFIRMASI PEMBAYARAN
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- SUCCESS MODAL -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>PEMBAYARAN BERHASIL!</h3>
+            <p id="successMessage">Produk akan dikirim melalui WhatsApp setelah dikonfirmasi oleh admin.</p>
+            <button class="btn btn-primary" id="successButton">
+                <i class="fab fa-whatsapp"></i> KONFIRMASI VIA WHATSAPP
+            </button>
+        </div>
+    </div>
+    <!-- LIVE CHAT BUTTON -->
+    <div class="live-chat" id="liveChatBtn">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <!-- BACK TO TOP BUTTON -->
+    <div class="back-to-top" id="backToTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <!-- DARK MODE TOGGLE -->
+    <div class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast"></div>
+    <!-- JAVASCRIPT -->
+    <script>
+        // GLOBAL VARIABLES
+        const whatsappNumber = "6285809249958";
+        const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+        const emailAddress = "rizkysuper877@gmail.com";
+        // NEW API ENDPOINT
+        const qrisApiUrl = "https://api.surtalogi.biz.id/api/tools/qrisdinamis";
+        // DOM ELEMENTS
+        const paymentPage = document.getElementById('paymentPage');
+        const customerInfoPage = document.getElementById('customerInfoPage');
+        const learnMorePage = document.getElementById('learnMorePage');
+        const paymentSelectedPlan = document.getElementById('paymentSelectedPlan');
+        const paymentSelectedPrice = document.getElementById('paymentSelectedPrice');
+        const paymentAdminFee = document.getElementById('paymentAdminFee');
+        const paymentTotalPrice = document.getElementById('paymentTotalPrice');
+        const paymentTotalPrice2 = document.getElementById('paymentTotalPrice2');
+        const paymentQrisImage = document.getElementById('paymentQrisImage');
+        const qrisLoader = document.getElementById('qrisLoader');
+        const paymentQrisTimer = document.getElementById('paymentQrisTimer');
+        const timerProgressBar = document.getElementById('timerProgressBar');
+        const paymentProofFile = document.getElementById('paymentProofFile');
+        const paymentUploadBtn = document.getElementById('paymentUploadBtn');
+        const paymentProofPreview = document.getElementById('paymentProofPreview');
+        const paymentProofVideoPreview = document.getElementById('paymentProofVideoPreview');
+        const paymentPayButton = document.getElementById('paymentPayButton');
+        const successModal = document.getElementById('successModal');
+        const successMessage = document.getElementById('successMessage');
+        const successButton = document.getElementById('successButton');
+        const learnMoreBtn = document.getElementById('learnMoreBtn');
+        const startNowBtn = document.getElementById('startNowBtn');
+        const customerInfoContinueBtn = document.getElementById('customerInfoContinueBtn');
+        const customerName = document.getElementById('customerName');
+        const customerPhone = document.getElementById('customerPhone');
+        const customerEmail = document.getElementById('customerEmail');
+        const customerNote = document.getElementById('customerNote');
+        const customerInfoSelectedPlan = document.getElementById('customerInfoSelectedPlan');
+        const customerInfoSelectedPrice = document.getElementById('customerInfoSelectedPrice');
+        const customerInfoForm = document.getElementById('customerInfoForm');
+        const liveChatBtn = document.getElementById('liveChatBtn');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const toast = document.getElementById('toast');
+        const uploadSpinner = document.getElementById('uploadSpinner');
+
+        // CURRENT ORDER DATA
+        let currentOrder = {
+            plan: '',
+            price: 0,
+            orderId: '',
+            adminFee: 0,
+            timer: null,
+            timeLeft: 600, // 10 MINUTES IN SECONDS
+            proofFile: null,
+            customerName: '',
+            customerPhone: '',
+            customerEmail: '',
+            customerNote: ''
+        };
+
+        // QRIS TEMPLATE STRING
+        const qrisTemplate = "00020101021126670016COM.NOBUBANK.WWW01189360050300000879140214532040299379480303UMI51440014ID.CO.QRIS.WWW0215ID20253773574180303UMI5204481253033605802ID5926RIZKY SUPER CELL OK22751566009BONDOWOSO61056821162070703A016304DEE0";
+
+        // --- ANIMATION & INTERACTION FUNCTIONS ---
+        // 1. Show Toast Notification
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        }
+
+        // 2. Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target); // Stop observing after animation
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections and cards for scroll animations
+        document.querySelectorAll('.section, .plan-card, .feature-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 3. Back to Top Button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 4. Dark Mode Toggle
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+                showToast("Mode Gelap Diaktifkan");
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+                showToast("Mode Terang Diaktifkan");
+            }
+        });
+
+        // Check for saved dark mode preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedMode = localStorage.getItem('darkMode');
+            if (savedMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                const icon = darkModeToggle.querySelector('i');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+
+        // --- QRIS & PAYMENT FUNCTIONS ---
+        // 5. Generate Random Order ID
+        function generateOrderId() {
+            const randomNum = Math.floor(Math.random() * 1000000);
+            return 'ZKYHOSTING-' + randomNum.toString().padStart(6, '0');
+        }
+
+        // 6. Generate Random Admin Fee
+        function generateRandomAdminFee() {
+            return Math.floor(Math.random() * (530 - 16 + 1)) + 16;
+        }
+
+        // 7. Format Time
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+            const secs = (seconds % 60).toString().padStart(2, '0');
+            return `${mins}:${secs}`;
+        }
+
+        // 8. Update Timer Progress Bar
+        function updateProgressBar() {
+            const percentage = (currentOrder.timeLeft / 600) * 100;
+            timerProgressBar.style.width = `${percentage}%`;
+        }
+
+        // 9. Start QRIS Timer
+        function startQrisTimer() {
+            if (currentOrder.timer) {
+                clearInterval(currentOrder.timer);
+            }
+            currentOrder.timeLeft = 600;
+            paymentQrisTimer.textContent = `QRIS AKAN EXPIRED DALAM: ${formatTime(currentOrder.timeLeft)}`;
+            updateProgressBar();
+
+            currentOrder.timer = setInterval(() => {
+                currentOrder.timeLeft--;
+                paymentQrisTimer.textContent = `QRIS AKAN EXPIRED DALAM: ${formatTime(currentOrder.timeLeft)}`;
+                updateProgressBar();
+
+                if (currentOrder.timeLeft <= 0) {
+                    clearInterval(currentOrder.timer);
+                    paymentQrisTimer.textContent = 'QRIS TELAH EXPIRED!';
+                    paymentQrisTimer.style.color = 'white';
+                    paymentQrisTimer.style.backgroundColor = 'var(--danger)';
+                    timerProgressBar.style.width = '0%';
+                    timerProgressBar.style.backgroundColor = 'var(--danger)';
+                    showToast("QRIS Telah Kadaluarsa!");
+                }
+            }, 1000);
+        }
+
+        // 10. Generate QRIS Dinamis (NEW API)
+        async function generateQris(nominal) {
+            // Show loader
+            qrisLoader.style.display = 'block';
+            paymentQrisImage.style.display = 'none';
+
+            try {
+                const response = await fetch(`${qrisApiUrl}?string=${encodeURIComponent(qrisTemplate)}&nominal=${nominal}`);
+                const data = await response.json();
+
+                if (data.status && data.data?.qris) {
+                    paymentQrisImage.src = data.data.qris;
+                    paymentQrisImage.style.display = 'block';
+                    qrisLoader.style.display = 'none';
+                    showToast("QRIS Berhasil Dimuat!");
+                } else {
+                    throw new Error(data.message || "Gagal membuat QRIS");
+                }
+            } catch (error) {
+                console.error('QRIS Error:', error);
+                qrisLoader.style.display = 'none';
+                paymentQrisImage.src = 'https://via.placeholder.com/200/ef4444/ffffff?text=ERROR'; // Red error placeholder
+                paymentQrisImage.style.display = 'block';
+                showToast("Gagal Memuat QRIS: " + error.message);
+            }
+        }
+
+        // --- MODAL & PAGE FUNCTIONS ---
+        // 11. Open Customer Info Page
+        function openCustomerInfo(planName, planPrice) {
+            currentOrder.plan = planName;
+            currentOrder.price = planPrice;
+            currentOrder.adminFee = generateRandomAdminFee();
+
+            customerInfoSelectedPlan.textContent = planName;
+            customerInfoSelectedPrice.textContent = `RP${planPrice.toLocaleString('id-ID')}${planName.includes('SCRIPT') ? '/SCRIPT' : '/BULAN'}`;
+
+            customerName.value = '';
+            customerPhone.value = '';
+            customerEmail.value = '';
+            customerNote.value = '';
+
+            document.body.style.overflow = 'hidden';
+            customerInfoPage.classList.add('show');
+            customerInfoPage.style.display = 'block';
+        }
+
+        // 12. Open Payment Page
+        async function openPaymentPage(e) {
+            e.preventDefault();
+
+            if (!customerName.value || !customerPhone.value || !customerEmail.value) {
+                showToast("Harap isi Nama, No. WhatsApp, dan Email!");
+                // Shake animation for form
+                customerInfoForm.classList.add('shake');
+                setTimeout(() => customerInfoForm.classList.remove('shake'), 600);
+                return;
+            }
+
+            currentOrder.orderId = generateOrderId();
+            currentOrder.customerName = customerName.value;
+            currentOrder.customerPhone = customerPhone.value;
+            currentOrder.customerEmail = customerEmail.value;
+            currentOrder.customerNote = customerNote.value;
+
+            const total = currentOrder.price + currentOrder.adminFee;
+
+            paymentSelectedPlan.textContent = currentOrder.plan;
+            paymentSelectedPrice.textContent = `RP${currentOrder.price.toLocaleString('id-ID')}${currentOrder.plan.includes('SCRIPT') ? '/SCRIPT' : '/BULAN'}`;
+            paymentAdminFee.textContent = `RP${currentOrder.adminFee.toLocaleString('id-ID')}`;
+            paymentTotalPrice.textContent = `RP${total.toLocaleString('id-ID')}`;
+            paymentTotalPrice2.textContent = `RP${total.toLocaleString('id-ID')}`;
+
+            // Reset proof preview
+            paymentProofPreview.style.display = 'none';
+            paymentProofVideoPreview.style.display = 'none';
+            paymentProofPreview.src = '#';
+            paymentProofVideoPreview.src = '#';
+            paymentPayButton.disabled = true;
+
+            // Generate QRIS
+            await generateQris(total);
+
+            customerInfoPage.classList.remove('show');
+            customerInfoPage.classList.add('hide');
+            setTimeout(() => {
+                customerInfoPage.style.display = 'none';
+                customerInfoPage.classList.remove('hide');
+            }, 500);
+
+            paymentPage.classList.add('show');
+            paymentPage.style.display = 'block';
+
+            startQrisTimer();
+        }
+
+        // 13. Close Payment Page
+        function closePaymentPage() {
+            paymentPage.classList.remove('show');
+            paymentPage.classList.add('hide');
+            setTimeout(() => {
+                paymentPage.style.display = 'none';
+                paymentPage.classList.remove('hide');
+                document.body.style.overflow = 'auto';
+            }, 500);
+
+            if (currentOrder.timer) {
+                clearInterval(currentOrder.timer);
+            }
+        }
+
+        // 14. Close Customer Info Page
+        function closeCustomerInfoPage() {
+            customerInfoPage.classList.remove('show');
+            customerInfoPage.classList.add('hide');
+            setTimeout(() => {
+                customerInfoPage.style.display = 'none';
+                customerInfoPage.classList.remove('hide');
+                document.body.style.overflow = 'auto';
+            }, 500);
+        }
+
+        // 15. Open Learn More Page
+        function openLearnMorePage() {
+            document.body.style.overflow = 'hidden';
+            learnMorePage.classList.add('show');
+            learnMorePage.style.display = 'block';
+        }
+
+        // 16. Close Learn More Page
+        function closeLearnMorePage() {
+            learnMorePage.classList.remove('show');
+            learnMorePage.classList.add('hide');
+            setTimeout(() => {
+                learnMorePage.style.display = 'none';
+                learnMorePage.classList.remove('hide');
+                document.body.style.overflow = 'auto';
+            }, 500);
+        }
+
+        // --- EVENT LISTENERS ---
+        paymentUploadBtn.addEventListener('click', () => {
+            paymentProofFile.click();
+        });
+
+        paymentProofFile.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                if (file.size > 10 * 1024 * 1024) {
+                    showToast("Ukuran file terlalu besar. Maksimal 10MB.");
+                    return;
+                }
+
+                // Show spinner while processing
+                uploadSpinner.style.display = 'block';
+
+                const reader = new FileReader();
+                reader.onloadstart = () => {
+                    paymentUploadBtn.disabled = true;
+                };
+                reader.onloadend = () => {
+                    uploadSpinner.style.display = 'none';
+                    paymentUploadBtn.disabled = false;
+                };
+
+                if (file.type.startsWith('image/')) {
+                    reader.onload = function(e) {
+                        paymentProofPreview.src = e.target.result;
+                        paymentProofPreview.style.display = 'block';
+                        paymentProofVideoPreview.style.display = 'none';
+                        currentOrder.proofFile = file;
+                        paymentPayButton.disabled = false;
+                        showToast("Gambar berhasil diunggah!");
+                    }
+                    reader.readAsDataURL(file);
+                } else if (file.type.startsWith('video/')) {
+                    reader.onload = function(e) {
+                        paymentProofPreview.style.display = 'none';
+                        paymentProofVideoPreview.style.display = 'block';
+                        paymentProofVideoPreview.src = URL.createObjectURL(file);
+                        currentOrder.proofFile = file;
+                        paymentPayButton.disabled = false;
+                        showToast("Video berhasil diunggah!");
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    showToast("Format file tidak didukung. Harap unggah gambar (JPG/PNG) atau video (MP4).");
+                    uploadSpinner.style.display = 'none';
+                    paymentUploadBtn.disabled = false;
+                }
+            }
+        });
+
+        paymentPayButton.addEventListener('click', async () => {
+            if (!paymentProofFile.files[0]) {
+                showToast("Harap unggah bukti transfer terlebih dahulu!");
+                // Shake animation for button
+                paymentPayButton.classList.add('shake');
+                setTimeout(() => paymentPayButton.classList.remove('shake'), 600);
+                return;
+            }
+
+            paymentPayButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MENGIRIM KONFIRMASI...';
+            paymentPayButton.disabled = true;
+
+            try {
+                // Simulate processing delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                const whatsappMessage = `HALO ZKY HOSTING, SAYA SUDAH MELAKUKAN PEMBAYARAN UNTUK:
+PAKET: ${currentOrder.plan}
+HARGA: RP${currentOrder.price.toLocaleString('id-ID')}
+BIAYA ADMIN: RP${currentOrder.adminFee.toLocaleString('id-ID')}
+TOTAL: RP${(currentOrder.price + currentOrder.adminFee).toLocaleString('id-ID')}
+ORDER ID: ${currentOrder.orderId}
+PAYMENT: QRIS
+NAMA: ${currentOrder.customerName}
+NO HP: ${currentOrder.customerPhone}
+EMAIL: ${currentOrder.customerEmail || '-'}
+CATATAN: ${currentOrder.customerNote || '-'}
+BUKTI TRANSFER TELAH DIUPLOAD. TOLONG DICEK DAN DIKONFIRMASI YA. TERIMA KASIH.`;
+
+                closePaymentPage();
+
+                successMessage.textContent = `PEMBAYARAN UNTUK ${currentOrder.plan} BERHASIL! PRODUK AKAN DIKIRIM MELALUI WHATSAPP SETELAH DIKONFIRMASI.`;
+                successButton.onclick = () => {
+                    window.open(`${whatsappUrl}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+                    successModal.classList.remove('show');
+                    successModal.classList.add('hide');
+                    setTimeout(() => {
+                        successModal.style.display = 'none';
+                        successModal.classList.remove('hide');
+                        document.body.style.overflow = 'auto';
+                    }, 500);
+                };
+
+                successModal.classList.add('show');
+                successModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                showToast("Pembayaran Berhasil!");
+
+            } catch (error) {
+                showToast('ERROR MENGIRIM KONFIRMASI: ' + error.message);
+            } finally {
+                paymentPayButton.innerHTML = '<i class="fas fa-paper-plane"></i> KONFIRMASI PEMBAYARAN';
+                paymentPayButton.disabled = false;
+            }
+        });
+
+        startNowBtn.addEventListener('click', function() {
+            document.querySelector('#hostingPlans').scrollIntoView({ behavior: 'smooth' });
+            // Add animation to the target section
+            const targetSection = document.querySelector('#hostingPlans');
+            targetSection.classList.remove('animate');
+            void targetSection.offsetWidth; // Trigger reflow
+            targetSection.classList.add('animate');
+        });
+
+        learnMoreBtn.addEventListener('click', openLearnMorePage);
+
+        customerInfoForm.addEventListener('submit', openPaymentPage);
+
+        liveChatBtn.addEventListener('click', function() {
+            window.open(whatsappUrl, '_blank');
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target === paymentPage) closePaymentPage();
+            if (e.target === customerInfoPage) closeCustomerInfoPage();
+            if (e.target === learnMorePage) closeLearnMorePage();
+            if (e.target === successModal) {
+                successModal.classList.remove('show');
+                successModal.classList.add('hide');
+                setTimeout(() => {
+                    successModal.style.display = 'none';
+                    successModal.classList.remove('hide');
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }
+        });
+
+        // Close buttons
+        document.querySelectorAll('.close-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parentModal = this.closest('.payment-page, .customer-info-page, .learn-more-page, .success-modal');
+                if (parentModal) {
+                    if (parentModal.id === 'paymentPage') closePaymentPage();
+                    if (parentModal.id === 'customerInfoPage') closeCustomerInfoPage();
+                    if (parentModal.id === 'learnMorePage') closeLearnMorePage();
+                    if (parentModal.id === 'successModal') {
+                        successModal.classList.remove('show');
+                        successModal.classList.add('hide');
+                        setTimeout(() => {
+                            successModal.style.display = 'none';
+                            successModal.classList.remove('hide');
+                            document.body.style.overflow = 'auto';
+                        }, 500);
+                    }
+                }
+            });
+        });
+
+        // --- INITIAL ANIMATIONS ON LOAD ---
+        window.addEventListener('DOMContentLoaded', () => {
+            // Animate badges with stagger
+            const badges = document.querySelectorAll('.badge');
+            badges.forEach((badge, index) => {
+                setTimeout(() => {
+                    badge.style.opacity = '1';
+                    badge.style.transform = 'translateY(0)';
+                }, 1300 + (index * 100)); // Start after 1.3s, then stagger
+            });
+
+            // Animate feature icons
+            const featureIcons = document.querySelectorAll('.feature-icon');
+            featureIcons.forEach(icon => {
+                icon.classList.add('float');
+            });
+        });
+    </script>
+</body>
+</html>
